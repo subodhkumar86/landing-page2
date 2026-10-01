@@ -1,0 +1,74 @@
+@keyframes p2-arrive {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes p2-bar-rise {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
+.p2 .p2hero .heroCopy {
+  animation: p2-arrive 700ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.p2 .p2hero .heroVisual {
+  animation: p2-arrive 850ms 120ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.p2 .p2hero .bars i {
+  transform-origin: bottom;
+  animation: p2-bar-rise 700ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.p2 .p2hero .bars i:nth-child(2) { animation-delay: 70ms; }
+.p2 .p2hero .bars i:nth-child(3) { animation-delay: 120ms; }
+.p2 .p2hero .bars i:nth-child(4) { animation-delay: 170ms; }
+.p2 .p2hero .bars i:nth-child(5) { animation-delay: 220ms; }
+.p2 .p2hero .bars i:nth-child(6) { animation-delay: 270ms; }
+.p2 .p2hero .bars i:nth-child(7) { animation-delay: 320ms; }
+.p2 .p2hero .bars i:nth-child(8) { animation-delay: 370ms; }
+
+.p2 :focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+
+.p2 .p2button,
+.p2 .navcta,
+.p2 article,
+.p2 .faq button {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.p2 .p2button:hover,
+.p2 .navcta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(16, 25, 22, .16);
+}
+
+.p2 article:hover {
+  transform: translateY(-4px);
+}
+
+@supports (animation-timeline: view()) {
+  .p2 main > section:not(.p2hero):not(.ticker),
+  .p2 main article {
+    animation: p2-scroll-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 32%;
+  }
+}
+
+@keyframes p2-scroll-reveal {
+  from { opacity: 0; translate: 0 18px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p2 *, .p2 *::before, .p2 *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}
